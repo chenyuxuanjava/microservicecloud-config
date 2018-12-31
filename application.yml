@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active:
+    - dev
+---
+spring:
+  profiles: dev  #开发环境
+  application:
+    name: microservicecloud-config-cyx-dev
+---
+spring:
+  profiles: test   #测试环境
+  application:
+    name: microservicecloud-config-cyx-test
+#   保存格式一定要是UTF-8,UTF-8,UTF-8形式
