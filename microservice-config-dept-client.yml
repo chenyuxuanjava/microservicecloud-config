@@ -1,0 +1,82 @@
+spring:
+  profiles:
+    active:
+    - dev
+---
+server:
+  port: 8001
+spring:
+  profiles: dev
+  application:
+    name: microservicecloud-config-dept-client
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/cloudDB01
+    username: root
+    password: root
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  type-aliases-package: com.cyx.springcloud.entity
+  mapper-locations:
+  - classpath: mybatis/mapper/**/*.xml
+
+eureka:
+  client:
+    service-url:
+      #      defaultZone: http://localhost:7001/eureka     #通知这个微服务eureka的注册中心在哪,这个地址在eureka-server端配置中有
+      defaultZone: http://eureka7001.com:7001/eureka  #通知这个微服务eureka的注册中心在哪,这个地址在eureka-server端配置中有
+  instance:
+    instance-id: microservicecloud-dept8001        #这个是在对应的Eureka Server实例的名称
+    prefer-ip-address: true               # 访问路径可以显示IP地址
+
+info:           #自定义空白链接信息内容
+  app.name: cyx-microservicecloud
+  company.name: cyx
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
+---
+server:
+  port: 8001
+spring:
+  profiles: test
+  application:
+    name: microservicecloud-config-dept-client
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/cloudDB01
+    username: root
+    password: root
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  type-aliases-package: com.cyx.springcloud.entity
+  mapper-locations:
+  - classpath: mybatis/mapper/**/*.xml
+
+eureka:
+  client:
+    service-url:
+      #      defaultZone: http://localhost:7001/eureka     #通知这个微服务eureka的注册中心在哪,这个地址在eureka-server端配置中有
+      defaultZone: http://eureka7001.com:7001/eureka  #通知这个微服务eureka的注册中心在哪,这个地址在eureka-server端配置中有
+  instance:
+    instance-id: microservicecloud-dept8001        #这个是在对应的Eureka Server实例的名称
+    prefer-ip-address: true               # 访问路径可以显示IP地址
+
+info:           #自定义空白链接信息内容
+  app.name: cyx-microservicecloud
+  company.name: cyx
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
